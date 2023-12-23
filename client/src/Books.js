@@ -21,17 +21,17 @@ const Books = () => {
         getBooks()
       }, [])
     return (
-        <div className="card m-3">
+        <div className="card m-3 d-flex flex-row">
             {
                 books.map((book) => {
                     return (
-                        <div class="card w-25">
-                        <img src={covers[book.cover]} class="card-img-top"/>
-                        <div class="card-body">
-                            <h5 class="card-title">{book.title}</h5>
-                            <p class="card-text">{book.desc}</p>
-                            <a href="#" class="btn btn-primary">check</a>
-                        </div>
+                        <div class="card w-25 mx-4">
+                            <img src={covers[book.cover]} class="card-img-top h-75"/>
+                            <div class="card-body">
+                                <h5 class="card-title">{book.title}</h5>
+                                <p class="card-text">{book.desc}</p>
+                                <a href="#" class="btn btn-primary">check</a>
+                            </div>
                         </div>
                     )
                 })
