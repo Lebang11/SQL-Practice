@@ -29,13 +29,29 @@ app.get('/', (req, res) => {
     
 })
 
+app.post('/users', async (req, res) => {
+    console.log(req.body);
+    q = 
+    `INSERT INTO users (first_name, middle_name, last_name, email, password, company, phone) VALUES ?`
+    values = [['Lebang', 'Albanus', 'Nong', 'lebangnong@gmail.com', 'monkeyOOO', 'SalvationTees', '0623997680']]
+
+    connection.query(q, [values],(err, data) => {
+        if (err) {
+            return res.json(err)
+        }
+        res.status(200)
+        return res.json(data)
+    })
+
+})
+
 app.post('/books', async (req, res) => {
     console.log(req.body);
     q = 
     `INSERT INTO books VALUES (2, "${req.body.title}","${req.body.description}","${req.body.cover}");`
     //  CREATE TABLE user ("id" INT PRIMARY KEY NOT NULL,"name" VARCHAR(255) NOT NULL); INSERT INTO books VALUES (1,${req.body.name});`
 
-    await db.query(q, (err, data) => {
+    await connection.query(q, [values], (err, data) => {
         if (err) {
             return res.json(err)
         }
